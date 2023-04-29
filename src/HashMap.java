@@ -36,7 +36,7 @@ public class HashMap<TKey, TValue> {
         //    LoadFactor - stosunek elementów do rozmiaru HashMap po przekroczeniu którego należy podwoić rozmiar HashMap.
         //    HashFunction - funkcja, według której liczony jest hash klucza.
         //       Przykład użycia:   int hash = hashFunction.apply(key);
-
+//        nodeArray = Node[initialSize]; // doesn't work with generics
         nodeArray = (Node[]) Array.newInstance(Node.class, initialSize);
         current_size = initialSize;
         elementsQuantity = 0;
