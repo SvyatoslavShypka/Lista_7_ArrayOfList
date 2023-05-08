@@ -169,41 +169,6 @@ public class HashMap<TKey, TValue> {
         current_size = newLength;
     }
 
-/*
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + initialSize;
-        result = prime * result + current_no_elements;
-        result = prime * result + current_size;
-        result = prime * result + Float.floatToIntBits((float) loadFactor);
-        result = prime * result + Arrays.hashCode(nodeArray);
-        return result;
-    }
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        HashMap other = (HashMap) obj;
-        if (initialSize != other.initialSize)
-            return false;
-        if (current_no_elements != other.current_no_elements)
-            return false;
-        if (current_size != other.current_size)
-            return false;
-        if (Float.floatToIntBits((float) loadFactor) != Float.floatToIntBits((float) other.loadFactor))
-            return false;
-        if (!Arrays.equals(nodeArray, other.nodeArray))
-            return false;
-        return true;
-    }
-*/
-
     private int calculatePosition(TKey key) {
         return hashFunction.apply(key);
     }
