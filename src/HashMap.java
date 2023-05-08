@@ -6,6 +6,27 @@ import java.util.function.Function;
 
 public class HashMap<TKey, TValue> {
 
+    public void rehash(Function<TKey, Integer> newHashFunction) {
+        // TODO: Zmień obecną funkcję hashującą na nową (wymaga przeliczenia dla wszystkich par klucz-wartość).
+        HashMap<TKey, TValue> rehashedMap = new HashMap<>(current_size, loadFactor, newHashFunction);
+
+        rehashedMap.nodeArray = Arrays.copyOf(nodeArray, current_size);;
+        for (int i = 0; i < nodeArray.length; i++) {
+            if(nodeArray[i] != null) {
+                for (int j = 0; j < nodeArray[i].linkedList.size(); j++) {
+                    try {
+                        rehashedMap.add(nodeArray[i].linkedList.getKey(j), nodeArray[i].linkedList.getValue(j));
+                    } catch (DuplicateKeyException e) {
+                    }
+                }
+            }
+        }
+        nodeArray = rehashedMap.nodeArray;
+        hashFunction = rehashedMap.hashFunction;
+        current_size = rehashedMap.current_size;
+        loadFactor = rehashedMap.loadFactor;
+    }
+
     public Node[] nodeArray;
     // capacity
     private int initialSize;

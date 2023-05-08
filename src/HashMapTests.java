@@ -4,6 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // Proszę nie modyfikować tego pliku!
 public class HashMapTests {
+
+    @org.junit.jupiter.api.Test
+    public void rehashTest() {
+        var hashMap = createTestHashMap(3);
+        hashMap.rehash(key -> key % 2);
+        assertEquals(3, hashMap.elements());
+        assertEquals(5, hashMap.size());
+        assertEquals("Value1", hashMap.get(1));
+        assertEquals("Value2", hashMap.get(2));
+        assertEquals("Value3", hashMap.get(3));
+    }
+
     @org.junit.jupiter.api.Test
     public void addKey_DoesntExist() throws DuplicateKeyException {
         var hashMap = createTestHashMap(3);
